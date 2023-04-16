@@ -1,0 +1,47 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev ./src/index.ts | pino-pretty --colorize",
+    "start": "node dist/index.js | pino-pretty --colorize",
+    "clean": "rm -rf dist",
+    "prisma": "npx prisma",
+    "prisma:gen": "npx prisma generate",
+    "prisma:studio": "npx prisma studio",
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma:seed": "npx prisma db seed",
+    "prisma:reset": "npx prisma migrate reset --skip-seed --skip-generate",
+    "db:reset": "npm run prisma:reset && npm run prisma:push && npm run prisma:seed",
+    "prisma:push": "npx prisma db push"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@graphql-tools/schema": "^9.0.18",
+    "@prisma/client": "^4.12.0",
+    "altair-fastify-plugin": "^5.0.22",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.15.0",
+    "graphql-yoga": "^3.9.0",
+    "pino": "^8.11.0",
+    "pino-pretty": "^10.0.0",
+    "tsx": "^3.12.6"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@types/node": "^18.15.11",
+    "@types/pino": "^7.0.5",
+    "fastify-tsconfig": "^1.0.1",
+    "prisma": "^4.12.0",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.4"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  }
+}
